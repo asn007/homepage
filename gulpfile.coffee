@@ -78,7 +78,7 @@ gulp.task 'jade', (callback) ->
   runsequence ['jade_base', 'jade_pages'], callback
 
 gulp.task 'jade_base', ->
-  gulp.src ['./jade/**/*.jade']
+  gulp.src ['./jade/index.jade', './jade/pertials/**/*.jade']
   .pipe gulpjade({
     pretty: true
     locals: {
