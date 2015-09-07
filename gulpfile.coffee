@@ -17,6 +17,8 @@ del         = require 'del'
 
 bngann      = require 'browserify-ngannotate'
 
+gulpjade    = require 'gulp-jade'
+
 debowerify  = require 'debowerify'
 coffeeify   = require 'coffeeify'
 uglifyify   = require 'uglifyify'
@@ -37,19 +39,6 @@ gulp.task 'images', ->
   })
   .pipe gulp.dest './static/dist/images'
 
-gulp.task 'images:watch', ->
-  gulp.src ['./static/images/**/*']
-  .pipe plumber()
-  .pipe watch('./static/images/**/*')
-  .pipe imagemin({
-    optimizationLevel: 5
-    interlaced: true
-    multipass: true
-    progressive: true
-  })
-  .pipe gulp.dest './static/dist/images'
-
-
 ### LESS ###
 
 gulp.task 'less', ->
@@ -68,22 +57,6 @@ gulp.task 'less', ->
   )
   .pipe gulp.dest './static/dist/css'
 
-gulp.task 'less:watch', ->
-  gulp.src ['./static/less/app.less']
-  .pipe plumber()
-  .pipe watch('./static/less/**/*.less')
-  .pipe less()
-  .pipe prefix({
-    browsers: ['last 2 versions']
-    cascade: true
-  })
-  .pipe gulp.dest './static/dist/css'
-  .pipe minify()
-  #.pipe concat('app.min.css')
-  .pipe rename((path) ->
-    path.basename = 'app.min'
-  )
-  .pipe gulp.dest './static/dist/css'
 
 ### COFFEE ###
 
@@ -100,6 +73,31 @@ gulp.task 'coffee', ->
 ###.pipe uglify()
 .pipe gulp.dest './static/dist/javascript'###
 
+gulp.task 'jade', (callback) ->
+  util.log 'Rebuilding jade files...'
+  runsequence ['jade_base', 'jade_pages'], callback
+
+gulp.task 'jade_base', ->
+  gulp.src ['./jade/**/*.jade']
+  .pipe gulpjade({
+    pretty: true
+    locals: {
+      config: {
+        env: gulp.env
+      }
+    }})
+  .pipe gulp.dest('./')
+
+gulp.task 'jade_pages', ->
+  gulp.src ['./pages/jade/**/*.jade']
+  .pipe gulpjade({
+    pretty: true
+    locals: {
+      config: {
+        env: gulp.env
+      }
+    }})
+  .pipe gulp.dest('./pages/html')
 
 gulp.task 'copy', ->
   gulp.src ['./static/copy/**/*']
