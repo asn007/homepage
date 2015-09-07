@@ -1,0 +1,60 @@
+doctype html
+html(data-ng-app='Homepage', data-ng-controller='ApplicationController')
+    head
+        meta(charset='utf-8')
+        meta(http-equiv='X-UA-Compatible', content='IE=edge')
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+        include preloader/style
+        title #{config.siteName}
+    body
+        include preloader/component
+        .tooltip-container
+            .ng-slide-homepage.system-tooltip(data-ng-repeat="(id, message) in messages", data-ng-animate="") {{ message }}
+        nav.top_menu_block
+            .inner_menu_block
+                .__left
+                    a.site_title_block(ui-sref='whoami') andrey@home: ~
+                    span.site_title_block.typer_block {{ renderedTypedText }}
+                    span.site_title_block.blinker_block _
+                .__right
+                    ul.menu_items_block
+                        li
+                            a(data-ui-sref='page({name: "whoami"})') обо мне
+                        li
+                            a(data-ui-sref='portfolio') работы
+                        li
+                            a(data-ui-sref='page({name: "contacts"})') контакты
+                        li
+                            a(href='http://asn007.me') блог
+        main.container_block(style='display:none;')
+            section.content_block
+                div(ui-view='')
+                h1 Привет. Меня зовут Андрей.
+                h2 Я делаю веб чуточку лучше
+                |Если коротко, то я - веб-разработчик.
+                br
+                |Бэкенд:
+                ul
+                    li JS/Node
+                    li Python/Flask
+                    li PHP/Laravel
+                |Фронтенд:
+                ul
+                    li HTML5
+                    li LESS/SASS/CSS3
+                    li jQuery
+                    li Angular.JS
+                |Process finished with code 0
+                br
+                br
+                br
+
+
+        link(href='http://fonts.googleapis.com/css?family=PT+Mono&subset=latin,cyrillic', rel='stylesheet', type='text/css')
+        if config.env == 'development'
+            link(rel='stylesheet', href='/static/css/app.css')
+            script(src='/static/javascript/app.js', async='')
+        else
+            link(rel='stylesheet', href='/static/css/app.min.css')
+            // FIXME: minify on build
+            script(src='/static/javascript/app.min.js', async='')

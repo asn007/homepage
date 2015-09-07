@@ -1,0 +1,50 @@
+{
+  "name": "homepage",
+  "version": "1.0.0",
+  "description": "Homepage",
+  "main": "app.coffee",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "http-server -o --cors"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/asn007/homepage.git"
+  },
+  "author": "Andrey Sinitsyn <andrey.sin98@gmail.com> (http://andrey.space)",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/asn007/homepage/issues"
+  },
+  "homepage": "https://github.com/asn007/homepage#readme",
+  "devDependencies": {
+    "bower": "^1.4.1",
+    "browserify": "^11.0.1",
+    "browserify-ngannotate": "^1.0.1",
+    "browserify-shim": "^3.8.10",
+    "coffeeify": "^1.1.0",
+    "debowerify": "^1.3.1",
+    "del": "^1.2.1",
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^2.3.1",
+    "gulp-browserify": "^0.5.1",
+    "gulp-changed": "^1.3.0",
+    "gulp-coffee": "^2.3.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-imagemin": "^2.3.0",
+    "gulp-less": "^3.0.3",
+    "gulp-minify-css": "^1.2.0",
+    "gulp-plumber": "^1.0.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-streamify": "^1.0.0",
+    "gulp-uglify": "^1.2.0",
+    "gulp-util": "^3.0.6",
+    "gulp-watch": "^4.3.4",
+    "nodemon": "^1.4.1",
+    "run-sequence": "^1.1.2",
+    "vinyl-source-stream": "^1.1.0",
+    "jade": "^1.11.0",
+    "jquery": "^2.1.4"
+  },
+  "dependencies": {}
+}
