@@ -1,4 +1,4 @@
 {
   "command": "whoami",
-  "contentUrl": ""
+  "path": "/pages/html/whoami.html"
 }

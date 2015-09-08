@@ -6,7 +6,7 @@ require 'angular-ui-router'
 require 'angular-bootstrap'
 
 window.PARTIALS_URL = '/partials/'
-window.AJAX_API_URL = '/ajax/'
+window.AJAX_API_URL = '/pages/'
 
 
 window.Homepage = angular.module('Homepage', ['ui.router', 'ngAnimate', 'ui.bootstrap'])
@@ -76,7 +76,7 @@ Homepage.config ($httpProvider, $stateProvider, $urlRouterProvider) ->
     controller: 'PageController'
     resolve: {
       pageSource: ($stateParams, $http) ->
-        $http.get "#{AJAX_API_URL}pages/#{$stateParams.id}"
+        $http.get "#{AJAX_API_URL}/#{$stateParams.id}"
     }
   }).state('portfolio', {
     url: '/portfolio'
