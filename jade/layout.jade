@@ -29,13 +29,6 @@ html(data-ng-app='Homepage', data-ng-controller='ApplicationController')
         main.container_block(style='display:none;')
             section.content_block
                 div(ui-view='')
-
-
         link(href='http://fonts.googleapis.com/css?family=PT+Mono&subset=latin,cyrillic', rel='stylesheet', type='text/css')
-        if config.env == 'development'
-            link(rel='stylesheet', href='/static/css/app.css')
-            script(src='/static/javascript/app.js', async='')
-        else
-            link(rel='stylesheet', href='/static/css/app.min.css')
-            // FIXME: minify on build
-            script(src='/static/javascript/app.min.js', async='')
+        link(rel='stylesheet', href='/static/css/app.css')
+        script(src='/static/javascript/app.js', async='')

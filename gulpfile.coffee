@@ -83,7 +83,7 @@ gulp.task 'jade_base', ->
     pretty: true
     locals: {
       config: {
-        env: gulp.env
+        env: 'development'#gulp.env
       }
     }})
   .pipe gulp.dest('./')
@@ -94,7 +94,7 @@ gulp.task 'jade_pages', ->
     pretty: true
     locals: {
       config: {
-        env: gulp.env
+        env: 'development'#gulp.env
       }
     }})
   .pipe gulp.dest('./pages/html')
@@ -110,10 +110,10 @@ gulp.task 'clean', (callback) ->
 ### BUILD ####
 gulp.task 'rebuild', (callback) ->
   util.log 'Starting full application rebuild'
-  runsequence 'clean', ['copy', 'less', 'images', 'coffee'], callback
+  runsequence 'clean', ['copy', 'jade', 'less', 'images', 'coffee'], callback
 
 gulp.task 'build', (callback) ->
   util.log 'Starting application build'
-  runsequence ['copy', 'less', 'images', 'coffee'], callback
+  runsequence ['copy', 'jade', 'less', 'images', 'coffee'], callback
 
 gulp.task 'default', ['build']
